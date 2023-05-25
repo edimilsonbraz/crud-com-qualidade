@@ -1,1 +1,16 @@
-Hoje eu preciso aprender Crud com js
+{
+  "todos": [
+    {
+      "id": "3877f1a0-cac5-4cf0-84ee-a074b7e1765e",
+      "date": "2023-05-25T19:06:07.750Z",
+      "content": "Primeira TODO",
+      "done": false
+    },
+    {
+      "id": "769317fe-fb90-4830-8950-adeaa497fc82",
+      "date": "2023-05-25T19:06:07.763Z",
+      "content": "Atualizado!!!",
+      "done": false
+    }
+  ]
+}
