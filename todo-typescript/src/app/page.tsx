@@ -1,8 +1,9 @@
-"use client"
+/* eslint-disable react/react-in-jsx-scope */
+"use client";
 
 import { GlobalStyles } from "./theme/GlobalStyles";
 
-const bg = '/bg.jpeg'
+const bg = "/bg.jpeg";
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
       <GlobalStyles />
       <header
         style={{
-          backgroundImage: `url('${bg}')`
+          backgroundImage: `url('${bg}')`,
         }}
       >
         <div className="typewriter">
@@ -60,7 +61,7 @@ export default function Home() {
             </tr>
 
             <tr>
-              <td colSpan={4} align="center" style={{ textAlign: 'center' }}>
+              <td colSpan={4} align="center" style={{ textAlign: "center" }}>
                 Carregando...
               </td>
             </tr>
@@ -72,14 +73,14 @@ export default function Home() {
             </tr>
 
             <tr>
-              <td colSpan={4} align="center" style={{ textAlign: 'center' }}>
+              <td colSpan={4} align="center" style={{ textAlign: "center" }}>
                 <button data-type="load-more">
-                  Carregar mais{' '}
+                  Carregar mais{" "}
                   <span
                     style={{
-                      display: 'inline-block',
-                      marginLeft: '4px',
-                      fontSize: '1.2em'
+                      display: "inline-block",
+                      marginLeft: "4px",
+                      fontSize: "1.2em",
                     }}
                   >
                     ↓
@@ -91,5 +92,5 @@ export default function Home() {
         </table>
       </section>
     </main>
-  )
+  );
 }
