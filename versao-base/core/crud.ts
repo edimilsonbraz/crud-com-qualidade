@@ -4,8 +4,6 @@ import { v4 as uuid } from "uuid";
 
 const DB_FILE_PATH = "./core/db";
 
-console.log("[CRUD]");
-
 type UUID = string;
 
 interface Todo {
@@ -15,7 +13,7 @@ interface Todo {
   done: boolean;
 }
 
-function create(content: string): Todo {
+export function create(content: string): Todo {
   const todo: Todo = {
     id: uuid(),
     date: new Date().toISOString(),
@@ -44,7 +42,7 @@ function create(content: string): Todo {
   return todo;
 }
 
-function read(): Array<Todo> {
+export function read(): Array<Todo> {
   //Lendo o content no sistema
   const dbString = fs.readFileSync(DB_FILE_PATH, "utf-8");
   const db = JSON.parse(dbString || "{}");
@@ -56,7 +54,7 @@ function read(): Array<Todo> {
   return db.todos;
 }
 
-function update(id: UUID, partialTodo: Partial<Todo>): Todo {
+export function update(id: UUID, partialTodo: Partial<Todo>): Todo {
   let updatedTodo;
 
   //Pegando todas as TODOS(array) e Lendo elas
@@ -90,13 +88,13 @@ function update(id: UUID, partialTodo: Partial<Todo>): Todo {
   return updatedTodo;
 }
 
-function updateContentByid(id: UUID, content: string): Todo {
+export function updateContentByid(id: UUID, content: string): Todo {
   return update(id, {
     content,
   });
 }
 
-function deleteById(id: UUID) {
+export function deleteById(id: UUID) {
   //Pegando todas as TODOS(array) e Lendo elas
   const todos = read();
 
@@ -120,25 +118,25 @@ function deleteById(id: UUID) {
   );
 }
 
-function CLEAR_DB() {
+export function CLEAR_DB() {
   fs.writeFileSync(DB_FILE_PATH, "");
 }
 
 //[SIMULATION]
-CLEAR_DB();
-create("Primeira TODO");
-const secondTodo = create("Segunda TODO");
+// CLEAR_DB();
+// create("Primeira TODO");
+// const secondTodo = create("Segunda TODO");
 
-deleteById(secondTodo.id);
+// deleteById(secondTodo.id);
 
-const thirdTodo = create("Atualizada!!!");
+// const thirdTodo = create("Atualizada!!!");
 // update(terceiraTodo.id, {
 //   content: "Atualizado!",
 //   done: true,
 // })
 
-updateContentByid(thirdTodo.id, "Atualizado!!!");
+// updateContentByid(thirdTodo.id, "Atualizado!!!");
 
-const todos = read();
-console.log(todos);
-console.log(todos.length);
+// const todos = read();
+// console.log(todos);
+// console.log(todos.length);
