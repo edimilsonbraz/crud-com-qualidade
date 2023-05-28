@@ -1,10 +1,8 @@
 import { read } from "@db-crud-todo";
-
 interface TodoRepositoryGetParams {
   page?: number;
   limit?: number;
 }
-
 interface TodoRepositoryGetOutput {
   todos: Todos[];
   total: number;

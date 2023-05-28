@@ -20,37 +20,42 @@ function get({
   page,
   limit,
 }: TodoRepositoryGetParams): Promise<TodoRepositoryGetOutput> {
-  return fetch("/api/todos").then(async (response) => {
-    const todosString = await response.text();
-    const todosFromServer = parseTodosFromServer(JSON.parse(todosString)).todos;
+  return fetch(`/api/todos?page=${page}&limit=${limit}`).then(
+    async (response) => {
+      const todosString = await response.text();
+      const responseParsed = parseTodosFromServer(JSON.parse(todosString));
 
-    const ALL_TODOS = todosFromServer;
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-    const paginatedTodos = ALL_TODOS.slice(startIndex, endIndex);
-    const totalPages = Math.ceil(ALL_TODOS.length / limit);
-
-    return {
-      todos: paginatedTodos,
-      total: ALL_TODOS.length,
-      pages: totalPages,
-    };
-  });
+      return {
+        total: responseParsed.total,
+        todos: responseParsed.todos,
+        pages: responseParsed.pages,
+      };
+    }
+  );
 }
 
-function parseTodosFromServer(responseBody: unknown): { todos: Array<Todo> } {
+function parseTodosFromServer(responseBody: unknown): {
+  total: number;
+  pages: number;
+  todos: Array<Todo>;
+} {
   if (
     responseBody !== null &&
     typeof responseBody === "object" &&
     "todos" in responseBody &&
+    "total" in responseBody &&
+    "pages" in responseBody &&
     Array.isArray(responseBody.todos)
   ) {
     return {
+      total: Number(responseBody.total),
+      pages: Number(responseBody.pages),
       todos: responseBody.todos.map((todo: unknown) => {
         if (todo === null && typeof todo !== "object") {
           throw new Error("Invalid todo from API");
         }
 
+        //Parseando os dados
         const { id, content, done, date } = todo as {
           id: string;
           content: string;
@@ -68,6 +73,8 @@ function parseTodosFromServer(responseBody: unknown): { todos: Array<Todo> } {
     };
   }
   return {
+    pages: 1,
+    total: 0,
     todos: [],
   };
 }
