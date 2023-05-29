@@ -5,7 +5,7 @@ import { todoController } from "@ui/controller/todo";
 
 const bg = "/bg.jpeg";
 
-interface HomeTopo {
+interface HomeTodo {
   id: string;
   content: string;
 }
@@ -14,11 +14,17 @@ function HomePage() {
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
-  const [todos, setTodos] = useState<HomeTopo[]>([]);
+  const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const hasNoTodos = todos.length === 0 && !isLoading;
+  const [todos, setTodos] = useState<HomeTodo[]>([]);
+
+  const homeTodos = todoController.filterTodosByContent<HomeTodo>(
+    todos,
+    search
+  );
 
   const hasMorePages = totalPages > page;
+  const hasNoTodos = homeTodos.length === 0 && !isLoading;
 
   useEffect(() => {
     setInitialLoadComplete(true);
@@ -56,7 +62,14 @@ function HomePage() {
 
       <section>
         <form>
-          <input type="text" placeholder="Filtrar lista atual, ex: Dentista" />
+          <input
+            type="text"
+            placeholder="Filtrar lista atual, ex: Dentista"
+            value={search}
+            onChange={function handleSearch(event) {
+              setSearch(event.target.value);
+            }}
+          />
         </form>
 
         <table border={1}>
@@ -72,7 +85,7 @@ function HomePage() {
           </thead>
 
           <tbody>
-            {todos.map((todo) => {
+            {homeTodos.map((todo) => {
               return (
                 <tr key={todo.id}>
                   <td>
@@ -118,6 +131,7 @@ function HomePage() {
                           setTodos((oldTodos) => {
                             return [...oldTodos, ...todos];
                           });
+
                           setTotalPages(pages);
                         })
                         .finally(() => {
