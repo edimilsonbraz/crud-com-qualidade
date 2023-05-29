@@ -1,15 +1,15 @@
-import { read } from "@db-crud-todo";
+import { read, create } from "@db-crud-todo";
 interface TodoRepositoryGetParams {
   page?: number;
   limit?: number;
 }
 interface TodoRepositoryGetOutput {
-  todos: Todos[];
+  todos: Todo[];
   total: number;
   pages: number;
 }
 
-interface Todos {
+interface Todo {
   id: string;
   content: string;
   date: string;
@@ -36,6 +36,13 @@ function get({
   };
 }
 
+async function createByContent(content: string): Promise<Todo> {
+  const newTodo = create(content);
+
+  return newTodo;
+}
+
 export const todoRepository = {
   get,
+  createByContent,
 };

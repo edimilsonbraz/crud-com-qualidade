@@ -21,11 +21,8 @@ export function create(content: string): Todo {
     done: false,
   };
 
-  const todos: Array<Todo> = [
-    //Lendo os todos já existente e depois grandando os proximos
-    ...read(),
-    todo,
-  ];
+  //Lendo os todos já existente e depois grandando os proximos
+  const todos: Array<Todo> = [...read(), todo];
 
   //salvar o content no sistema
   fs.writeFileSync(
