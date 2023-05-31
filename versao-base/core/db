@@ -94,13 +94,13 @@
       "id": "f7b899ad-b7db-461e-8c15-feacdd78bb9a",
       "date": "2023-05-30T14:25:20.432Z",
       "content": "Teste Final",
-      "done": false
+      "done": true
     },
     {
       "id": "1073c02a-33f3-43b1-aa6a-a943b262c5ec",
       "date": "2023-05-30T14:36:37.635Z",
       "content": "Estudar Python",
-      "done": false
+      "done": true
     }
   ]
 }
