@@ -43,44 +43,8 @@
       "done": false
     },
     {
-      "id": "04e4d772-130e-470f-a42e-cf2bdd114b5f",
-      "date": "2023-05-30T13:55:51.537Z",
-      "content": "Estudar",
-      "done": false
-    },
-    {
       "id": "9fee91bc-3fcb-494f-b808-f2ca59b8eeca",
       "date": "2023-05-30T13:56:36.347Z",
-      "content": "Estudar",
-      "done": false
-    },
-    {
-      "id": "5364e5ec-52e5-4788-a77f-51267eb553b1",
-      "date": "2023-05-30T13:56:46.428Z",
-      "content": "Estudar",
-      "done": false
-    },
-    {
-      "id": "d3011734-b63d-4059-b325-14dbdd1c0273",
-      "date": "2023-05-30T13:56:52.440Z",
-      "content": "Estudar",
-      "done": false
-    },
-    {
-      "id": "0108899c-c9e4-46e2-949e-342876ca07a8",
-      "date": "2023-05-30T13:57:03.895Z",
-      "content": "Estuda",
-      "done": false
-    },
-    {
-      "id": "1d6e9cad-9c2e-4f18-ac69-c61bf4fab1b0",
-      "date": "2023-05-30T13:59:32.479Z",
-      "content": "Estudar",
-      "done": false
-    },
-    {
-      "id": "ffe6520a-16ae-4332-8562-e7c314cd5908",
-      "date": "2023-05-30T14:23:12.918Z",
       "content": "Estudar",
       "done": false
     },
@@ -91,16 +55,10 @@
       "done": false
     },
     {
-      "id": "f7b899ad-b7db-461e-8c15-feacdd78bb9a",
-      "date": "2023-05-30T14:25:20.432Z",
-      "content": "Teste Final",
-      "done": true
-    },
-    {
       "id": "1073c02a-33f3-43b1-aa6a-a943b262c5ec",
       "date": "2023-05-30T14:36:37.635Z",
       "content": "Estudar Python",
-      "done": true
+      "done": false
     }
   ]
 }

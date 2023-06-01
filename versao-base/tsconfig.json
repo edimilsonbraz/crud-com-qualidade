@@ -18,9 +18,7 @@
     "paths": {
       "@ui/*": ["src/ui/*"],
       "@db-crud-todo": ["core/crud.ts"],
-      "@server/*": [
-        "src/server/*"
-      ]
+      "@server/*": ["src/server/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
