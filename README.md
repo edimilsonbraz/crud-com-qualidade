@@ -2,7 +2,7 @@
 ---
 
 <h1 align="center">
-  <img src="./versao-base/public/image_crud.png" alt="image crud" title="Crud com Qualidade"  width="700px;"/>
+  <img src="./public/image_crud.png" alt="image crud" title="Crud com Qualidade"  width="700px;"/>
 </h1>
 
 ---
