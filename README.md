@@ -9,13 +9,14 @@
 ## :point_right: Tecnologias
 -  ⚛️
 -  ⚛️
--  ⚛️
+
+
 
 ---
 ## :heavy_check_mark: Pré-requisitos
 -  ⚛️
 -  ⚛️
--  ⚛️
+
 
 ---
 ### 🎲 Rodando a Aplicação
