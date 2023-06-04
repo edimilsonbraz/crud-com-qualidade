@@ -1,12 +1,12 @@
-import { HttpNotFoundError } from "@server/infra/errors";
-import { todoRepository } from "@server/repository/todo";
 import { NextApiRequest, NextApiResponse } from "next";
+import { todoRepository } from "@server/repository/todo";
 import { z as schema } from "zod";
+import { HttpNotFoundError } from "@server/infra/errors";
 
 async function get(req: NextApiRequest, res: NextApiResponse) {
   const query = req.query;
   const page = Number(query.page);
-  const limit = Number(query.page);
+  const limit = Number(query.limit);
 
   if (query.page && isNaN(page)) {
     res.status(400).json({
@@ -27,8 +27,8 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
   }
 
   const output = await todoRepository.get({
-    page: page,
-    limit: limit,
+    page,
+    limit,
   });
 
   res.status(200).json({
@@ -57,11 +57,19 @@ async function create(req: NextApiRequest, res: NextApiResponse) {
   }
 
   //Here we have the data!
-  const createdTodo = await todoRepository.createByContent(body.data.content);
+  try {
+    const createdTodo = await todoRepository.createByContent(body.data.content);
 
-  res.status(201).json({
-    todo: createdTodo,
-  });
+    res.status(201).json({
+      todo: createdTodo,
+    });
+  } catch {
+    res.status(400).json({
+      error: {
+        message: "Failed to create todo",
+      },
+    });
+  }
 }
 
 async function toggleDone(req: NextApiRequest, res: NextApiResponse) {
