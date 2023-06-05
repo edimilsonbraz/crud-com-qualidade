@@ -7,6 +7,10 @@ name: "[CD] Continuous Delivery"
 on: 
   [push]
 
+env:
+  VERCEL_ORG_ID: H2L9BdPTvuRUAQdFIy3AyhFj
+  VERCEL_PROJECT_ID: prj_U4LNEgEO9U8WdyaBEMxZdMXYiXhz
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
