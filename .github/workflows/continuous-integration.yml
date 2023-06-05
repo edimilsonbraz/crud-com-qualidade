@@ -9,7 +9,8 @@ jobs:
     steps: 
       - uses: actions/checkout@v3
       - name: "Debug"
-        run: ls -la
+        run: |
+          ls -la
       - name: "Install Dependencies"
         run: "npm install"
       - name: "Lint"
